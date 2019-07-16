@@ -1,0 +1,256 @@
+// ======================================================================
+// 全局样式
+// ======================================================================
+@import './var.styl'
+@import './reset.styl'
+
+html,
+body,
+#app {
+  height: 100%
+}
+
+body {
+  margin: 0 auto
+  font-family: PingFangSC-Regular, '微软雅黑', 'Microsoft YaHei', Helvetica, STHeiTi, Sans-serif
+  line-height: 1.5
+  font-size: 28px
+  background: $silver
+  color: $black
+  -webkit-text-size-adjust: none
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+  outline: 0
+  overflow-x: hidden
+  -webkit-user-select: none
+  /* -webkit-overflow-scrolling: touch */
+}
+
+#app {
+  position: relative
+}
+
+// viewport适配插件 postcss-viewport-units 会自动添加`content`
+// 该样式解决了 在`img`中`content`会引起部分浏览器图片不显示 的问题
+img {
+  content: normal !important
+}
+
+// 隐藏 vue 未编译的 Mustache 标签
+[v-cloak],
+.hidden {
+  display: none
+}
+
+.v-link-active {
+  color: $blue
+}
+
+// 隐藏元素
+.vhidden {
+  visibility: hidden
+}
+
+// 超出隐藏（防滚动）
+.ohidden {
+  overflow: hidden
+}
+
+// input-placeholder
+input {
+  &::-webkit-input-placeholder {
+    color: $placeholder
+  }
+  &::-moz-placeholder {
+    color: $placeholder
+  }
+  &:-moz-placeholder {
+    color: $placeholder
+  }
+  &:-ms-input-placeholder {
+    color: $placeholder
+  }
+}
+
+
+// ======================================================================
+// vue transitions 过渡动画
+// ======================================================================
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform
+  transition: all 300ms
+  position: absolute
+  left: 0
+  right: 0
+}
+.slide-right-enter {
+  transform: translateX(-100%)
+}
+.slide-right-leave-active {
+  transform: translateX(100%)
+}
+.slide-left-enter {
+  transform: translateX(100%)
+}
+.slide-left-leave-active {
+  transform: translateX(-100%)
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  will-change: opacity
+  transition: all 300ms
+}
+.fade-enter {
+  opacity: 0
+}
+.fade-leave-active {
+  display: none
+}
+
+.fade-all-enter-active,
+.fade-all-leave-active {
+  will-change: opacity
+  transition: all 300ms
+}
+.fade-all-enter,
+.fade-all-leave-active {
+  opacity: 0
+}
+
+.fade-up-enter-active,
+.fade-up-leave-active,
+.fade-down-enter-active,
+.fade-down-leave-active {
+  will-change: transform, opacity
+  transition: all 300ms
+}
+.fade-up-enter,
+.fade-up-leave-active {
+  transform: translateY(100%)
+  opacity: 0
+}
+.fade-down-enter,
+.fade-down-leave-active {
+  transform: translateY(-100%)
+  opacity: 0
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  will-change: transform, opacity
+  transition: all 300ms
+}
+.slide-enter {
+  transform: translateX(30px)
+  opacity: 0
+}
+.slide-leave-active {
+  display: none
+}
+
+.slide-all-enter-active,
+.slide-all-leave-active {
+  will-change: transform, opacity
+  transition: all 300ms
+}
+.slide-all-enter,
+.slide-all-leave-active {
+  transform: translateX(30px)
+  opacity: 0
+  &.t-reverse {
+    transform: translateX(-30px)
+  }
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active,
+.slide-down-enter-active,
+.slide-down-leave-active {
+  will-change: transform
+  transition: all 300ms
+}
+.slide-up-enter,
+.slide-up-leave-active {
+  transform: translateY(100%)
+}
+.slide-down-enter,
+.slide-down-leave-active {
+  transform: translateY(-100%)
+}
+
+.bounce-enter-active {
+  animation: bounce 300ms
+}
+.bounce-leave-enter,
+.bounce-leave-active {
+  display: none
+}
+.bounce-all-enter-active {
+  will-change: transform, opacity
+  animation: bounce 300ms
+}
+.bounce-all-enter {
+  transform: scale(1)
+}
+.bounce-all-leave-active {
+  will-change: transform, opacity
+  transition: all 200ms
+  transform: scale(0)
+  opacity: 0
+}
+@keyframes bounce {
+  0% {transform: scale(0)}
+  50% {transform: scale(1.2)}
+  100% {transform: scale(1)}
+}
+
+.zoom-y-enter-active,
+.zoom-y-leave-active {
+  will-change: transform, opacity
+  transition: all 300ms
+  transform: scaleY(1.0)
+  transform-origin: top
+}
+.zoom-y-enter,
+.zoom-y-leave-active {
+  transform: scaleY(0)
+  opacity: 0
+}
+
+// postcss-write-svg 处理 retina 1px 问题
+@svg retina-square {
+  @rect {
+    fill: var(--color, $white)
+    width: 100%
+    height: 100%
+  }
+}
+.hairlines-bg {
+  background: $solid-gray svg(retina-square param(--color $white))
+}
+
+@svg retina-border {
+  height: 2px
+  @rect {
+    fill: var(--color, black)
+    width: 100%
+    height: 50%
+  }
+}
+.hairlines-bottom {
+  border-bottom: 1px solid transparent
+  border-image: svg(retina-border param(--color $solid-gray)) 2 2 stretch
+}
+
+// ======================================================================
+// 通用样式
+// ======================================================================
+
+
+
+// ======================================================================
+// 模块
+// ======================================================================
