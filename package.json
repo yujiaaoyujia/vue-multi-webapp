@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@tweenjs/tween.js": "^17.2.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "babel-runtime": "^6.26.0",
     "dayjs": "^1.7.7",
     "number-precision": "^1.2.0",
